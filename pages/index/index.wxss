@@ -1,21 +1,102 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.container {
+    padding-top: 200rpx;
+    padding-bottom: 80rpx;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.cover {
+    width: 380rpx;
+    height: 380rpx;
+    border-radius: 50%;
+    border: 80rpx solid black;
+    box-shadow: 0 0 0 15rpx #4F4C49;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.cover.placeholder {
+    position: relative;
+    background-color: #E43A45;
 }
 
-.usermotto {
-  margin-top: 200px;
+.cover.placeholder::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 100rpx;
+    height: 100rpx;
+    top: 50%;
+    left: 50%;
+    background-color: black;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cover.animation {
+    animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.prograss-panel {
+    display: flex;
+    font-size: .65em;
+    color: #878481;
+    align-items: center;
+    margin-top: 100rpx;
+}
+
+.prograss-wrapper {
+    position: relative;
+    width: 520rpx;
+    margin: 0 20rpx;
+    border-top: 6rpx solid #878481;
+}
+
+.prograss-wrapper .prograss {
+    position: absolute;
+    left: 0;
+    top: -3rpx;
+    width: 100rpx;
+    border-top: 5rpx solid #E43A43;
+}
+
+.prograss-wrapper .vernier {
+    position: absolute;
+    left: 100rpx;
+    top: -20rpx;
+    background-color: #E43A43;
+    width: 10rpx;
+    height: 10rpx;
+    border: 20rpx solid white;
+    border-radius: 50%;
+}
+
+.control-panel {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+image.btn {
+    display: inline-block;
+}
+
+.btn.btn-lg {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.btn.btn-md {
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.btn.btn-sm {
+    width: 60rpx;
+    height: 60rpx;
 }

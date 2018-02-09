@@ -1,13 +1,21 @@
 <!--index.wxml-->
+<view class="background" style="background: url({{ songs[index].cover }}) 0 / cover fixed"></view>
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+    <image wx:if="{{ index >= 0 }}" class="cover {{ control.isPlaying ? 'animation' : '' }}" src="{{ songs[index].cover }}"></image>
+    <view wx:else class="cover placeholder"></view>
+    <view class="prograss-panel">
+        <text>00:28</text>
+        <view class="prograss-wrapper">
+            <view class="prograss"></view>
+            <view class="vernier"></view>
+        </view>
+        <text>04:01</text>
+    </view>
+    <view class="control-panel">
+        <image bindtap="changeMode" src="{{ control.isRepeat ? icons.shuffle : icons.repeat }}" class="btn btn-sm"></image>
+        <image bindtap="backward" src="{{ icons.backward }}" class="btn btn-md"></image>
+        <image bindtap="play" src="{{ control.isPlaying ?  icons.pause : icons.play }}" class="btn btn-lg"></image>
+        <image bindtap="forward" src="{{ icons.forward }}" class="btn btn-md"></image>
+        <image bindtap="showPlaylist" src="{{ icons.playlist }}" class="btn btn-sm"></image>
+    </view>
 </view>
