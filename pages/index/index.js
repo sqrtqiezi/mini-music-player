@@ -174,7 +174,11 @@ Page({
       });
 
       audioManager.onEnded(() => {
-        this.forward();
+        if(this.data.control.isRepeat) {
+          this.forward();
+        } else {
+          this.setData({ index: Math.floor(Math.random() * 6) }, this.refresh.bind(this)); 
+        }
       });
     }
   }
