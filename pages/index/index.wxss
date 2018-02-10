@@ -41,7 +41,7 @@
     }
 }
 
-.prograss-panel {
+.progress-panel {
     display: flex;
     font-size: .65em;
     color: #878481;
@@ -49,24 +49,29 @@
     margin-top: 100rpx;
 }
 
-.prograss-wrapper {
+.progress-panel text {
+    width: 3em;
+}
+
+.progress-wrapper {
     position: relative;
     width: 520rpx;
+    height:  6rpx;
     margin: 0 20rpx;
-    border-top: 6rpx solid #878481;
+    background-color: #878481;
 }
 
-.prograss-wrapper .prograss {
+.progress-wrapper .progress {
+    position: absolute;
+    width: 100rpx;
+    left: 0;
+    top: 0;
+    border-top: 6rpx solid #E43A43;
+}
+
+.progress-wrapper .vernier {
     position: absolute;
     left: 0;
-    top: -3rpx;
-    width: 100rpx;
-    border-top: 5rpx solid #E43A43;
-}
-
-.prograss-wrapper .vernier {
-    position: absolute;
-    left: 100rpx;
     top: -20rpx;
     background-color: #E43A43;
     width: 10rpx;

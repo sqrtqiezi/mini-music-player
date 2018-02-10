@@ -3,16 +3,16 @@
 <view class="container">
     <image wx:if="{{ index >= 0 }}" class="cover {{ control.isPlaying ? 'animation' : '' }}" src="{{ songs[index].cover }}"></image>
     <view wx:else class="cover placeholder"></view>
-    <view class="prograss-panel">
-        <text>00:28</text>
-        <view class="prograss-wrapper">
-            <view class="prograss"></view>
-            <view class="vernier"></view>
+    <view class="progress-panel">
+        <text>{{ control.currentTime }}</text>
+        <view class="progress-wrapper">
+            <view class="progress" style="width: {{ 5.2 * control.progress }}rpx;"></view>
+            <view class="vernier" bindtouchmove="moveVernier" style="left: {{ 5.2 * control.progress }}rpx;"></view>
         </view>
-        <text>04:01</text>
+        <text>{{ control.duration }}</text>
     </view>
     <view class="control-panel">
-        <image bindtap="changeMode" src="{{ control.isRepeat ? icons.shuffle : icons.repeat }}" class="btn btn-sm"></image>
+        <image bindtap="changeMode" src="{{ control.isRepeat ?  icons.repeat : icons.shuffle }}" class="btn btn-sm"></image>
         <image bindtap="backward" src="{{ icons.backward }}" class="btn btn-md"></image>
         <image bindtap="play" src="{{ control.isPlaying ?  icons.pause : icons.play }}" class="btn btn-lg"></image>
         <image bindtap="forward" src="{{ icons.forward }}" class="btn btn-md"></image>

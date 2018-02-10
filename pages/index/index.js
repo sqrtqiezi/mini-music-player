@@ -1,4 +1,7 @@
 //index.js
+
+const util = require("../../utils/util");
+
 //获取应用实例
 const app = getApp();
 
@@ -16,13 +19,21 @@ Page({
       shuffle: "../../assets/images/music_shuffle_button.png"
     },
     control: {
-      isPlaying: false,
-      isRepeat: true
+      isPlaying: true,
+      isRepeat: true,
+      progress: 0,
+      currentTime: "00:00",
+      duration: "00:00",
+      handlerTouchMove: null
+    },
+    system: {
+      pixelRatio: 0
     }
   },
 
   onLoad() {
-    this.setNavigationBarTitle();
+    const { pixelRatio } = wx.getSystemInfoSync();
+    this.setData({ "system.pixelRatio": pixelRatio });
   },
 
   onReady() {
@@ -30,15 +41,21 @@ Page({
   },
 
   play() {
-    this.setData({ "control.isPlaying": !this.data.control.isPlaying });
+    const isPlaying = !this.data.control.isPlaying;
+    this.setData({ "control.isPlaying": isPlaying });
+    if (isPlaying) {
+      app.globalData.audioManager.play();
+    } else {
+      app.globalData.audioManager.pause();
+    }
   },
 
   forward() {
     const index = this.data.index + 1;
     if (index < this.data.songs.length) {
-      this.setData({ index }, this.setNavigationBarTitle.bind(this));
+      this.setData({ index }, this.refresh.bind(this));
     } else {
-      this.setData({ index: 0 }, this.setNavigationBarTitle.bind(this));
+      this.setData({ index: 0 }, this.refresh.bind(this));
     }
   },
 
@@ -47,10 +64,37 @@ Page({
     if (index < 0) {
       this.setData(
         { index: this.data.songs.length - 1 },
-        this.setNavigationBarTitle.bind(this)
+        this.refresh.bind(this)
       );
     } else {
-      this.setData({ index }, this.setNavigationBarTitle.bind(this));
+      this.setData({ index }, this.refresh.bind(this));
+    }
+  },
+
+  moveVernier(e) {
+    const touch = e.touches[0];
+    const offsetX = touch.pageX * this.data.system.pixelRatio;
+    if (offsetX < 115 || offsetX > 650) {
+      return;
+    }
+    const progress = (offsetX - 115) / 520 * 100;
+    this.setProgress(progress);
+  },
+
+  setProgress(progress) {
+    this.setData({ "control.progress": progress });
+
+    if (!this.data.control.handlerTouchMove) {
+
+      // 播放进度设置节流
+      const hanlder = setTimeout(() => {
+        const { duration } = app.globalData.audioManager;
+        app.globalData.audioManager.seek(progress / 100 * duration);
+        clearTimeout(hanlder);
+        this.setData({ "control.hanlderTouchMove": null });
+      }, 200);
+
+      this.setData({ "control.hanlderTouchMove": hanlder });
     }
   },
 
@@ -66,7 +110,7 @@ Page({
     wx.showActionSheet({
       itemList: songs,
       success: res => {
-        this.setData({ index: res.tapIndex });
+        this.setData({ index: res.tapIndex }, this.refresh.bind(this));
       }
     });
   },
@@ -95,7 +139,7 @@ Page({
               index: 0
             },
             () => {
-              this.setNavigationBarTitle();
+              this.refresh();
               wx.hideLoading();
             }
           );
@@ -103,12 +147,35 @@ Page({
       });
   },
 
-  setNavigationBarTitle() {
+  refresh() {
     const index = this.data.index;
     if (index >= 0) {
       const song = this.data.songs[index];
       const title = `${song.title} - ${song.artist}`;
       wx.setNavigationBarTitle({ title });
+
+      const audioManager = app.globalData.audioManager;
+      audioManager.title = song.title;
+      audioManager.epname = song.title;
+      audioManager.singer = song.artist;
+      audioManager.coverImgUrl = song.cover;
+      audioManager.src = song.music_url;
+
+      audioManager.onTimeUpdate(() => {
+        const { duration, currentTime } = audioManager;
+        this.setData({
+          "control.duration": util.formatTime(duration),
+          "control.currentTime": util.formatTime(currentTime)
+        });
+
+        if (!this.data.control.handlerTouchMove) {
+          this.setData({ "control.progress": currentTime / duration * 100 });
+        }
+      });
+
+      audioManager.onEnded(() => {
+        this.forward();
+      });
     }
   }
 });

@@ -10,9 +10,11 @@ App({
     });
 
     this.globalData.AV = AV;
+    this.globalData.audioManager = wx.getBackgroundAudioManager();
   },
   globalData: {
     userInfo: null,
-    AV: null
+    AV: null,
+    audioManager: null
   }
 });
