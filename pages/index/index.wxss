@@ -41,6 +41,28 @@
     }
 }
 
+.lyric-panel,
+.cover-panel {
+    width: 540rpx;
+    height: 540rpx;
+}
+
+.lyric-panel {
+    box-sizing: border-box;
+}
+
+.lyric-panel text {
+    text-align: center;
+    color: #989898;
+    font-size: .8em;
+    display: block;
+    margin-bottom: 1em;
+}
+
+.lyric-panel text.active {
+    color: white;
+}
+
 .progress-panel {
     display: flex;
     font-size: .65em;

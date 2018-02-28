@@ -1,21 +1,32 @@
 <!--index.wxml-->
 <view class="background" style="background: url({{ songs[index].cover }}) 0 / cover fixed"></view>
 <view class="container">
-    <image wx:if="{{ index >= 0 }}" class="cover {{ control.isPlaying ? 'animation' : '' }}" src="{{ songs[index].cover }}"></image>
-    <view wx:else class="cover placeholder"></view>
+    <view wx:if="{{ !control.isShowLyric }}" class="cover-panel" catch:tap="toggleShowLyric">
+        <image wx:if="{{ index >= 0 }}" class="cover {{ control.isPlaying ? 'animation' : '' }}" src="{{ songs[index].cover }}"></image>
+        <view wx:else class="cover placeholder"></view>
+    </view>
+    <scroll-view wx:else class="lyric-panel" catch:tap="toggleShowLyric" scroll-y scroll-with-animation scroll-top="{{control.scrollTop}}">
+        <view style="width: 100%; height: 260rpx;"></view> <!--占位，让歌词在中间位置显示 -->
+        <view wx:if="{{lyric !== null}}">
+            <text wx:for="{{lyric.lines}}" wx:key="item.time" class="{{ control.time > item.time && control.time < item.nextTime ? 'active' : '' }}">{{item.txt}}</text>
+        </view>
+        <block wx:else>
+            <text>没有歌词～</text>
+        </block>
+    </scroll-view>
     <view class="progress-panel">
         <text>{{ control.currentTime }}</text>
         <view class="progress-wrapper">
             <view class="progress" style="width: {{ 5.2 * control.progress }}rpx;"></view>
-            <view class="vernier" bindtouchmove="moveVernier" style="left: {{ 5.2 * control.progress }}rpx;"></view>
+            <view class="vernier" catch:touchmove="moveVernier" style="left: {{ 5.2 * control.progress }}rpx;"></view>
         </view>
         <text>{{ control.duration }}</text>
     </view>
     <view class="control-panel">
-        <image bindtap="changeMode" src="{{ control.isRepeat ?  icons.repeat : icons.shuffle }}" class="btn btn-sm"></image>
-        <image bindtap="backward" src="{{ icons.backward }}" class="btn btn-md"></image>
-        <image bindtap="play" src="{{ control.isPlaying ?  icons.pause : icons.play }}" class="btn btn-lg"></image>
-        <image bindtap="forward" src="{{ icons.forward }}" class="btn btn-md"></image>
-        <image bindtap="showPlaylist" src="{{ icons.playlist }}" class="btn btn-sm"></image>
+        <image catch:tap="toggleRepeatMode" src="{{ control.isRepeat ?  icons.repeat : icons.shuffle }}" class="btn btn-sm"></image>
+        <image catch:tap="backward" src="{{ icons.backward }}" class="btn btn-md"></image>
+        <image catch:tap="play" src="{{ control.isPlaying ?  icons.pause : icons.play }}" class="btn btn-lg"></image>
+        <image catch:tap="forward" src="{{ icons.forward }}" class="btn btn-md"></image>
+        <image catch:tap="showPlaylist" src="{{ icons.playlist }}" class="btn btn-sm"></image>
     </view>
 </view>

@@ -1,6 +1,6 @@
 //index.js
-
 const util = require("../../utils/util");
+const Lyric = require("../../libs/lyric-parser").Lyric;
 
 //获取应用实例
 const app = getApp();
@@ -18,13 +18,17 @@ Page({
       repeat: "../../assets/images/music_repeat_button.png",
       shuffle: "../../assets/images/music_shuffle_button.png"
     },
+    lyric: null,
     control: {
+      isShowLyric: false,
       isPlaying: true,
       isRepeat: true,
       progress: 0,
       currentTime: "00:00",
+      time: 0,
       duration: "00:00",
-      handlerTouchMove: null
+      handlerTouchMove: null,
+      scrollTop: 0
     },
     system: {
       pixelRatio: 0
@@ -98,8 +102,29 @@ Page({
     }
   },
 
-  changeMode() {
+  toggleRepeatMode() {
     this.setData({ "control.isRepeat": !this.data.control.isRepeat });
+  },
+
+  toggleShowLyric() {
+    this.setData({ "control.isShowLyric": !this.data.control.isShowLyric });
+  },
+
+  updateScrollTop() {
+    if (!this.data.lyric) {
+      return;
+    }
+
+    let scrollTop = 0;
+    const lyric = this.data.lyric;
+    const time = this.data.control.time;
+
+    for(let i = 0; i < lyric.lines.length; i++) {
+      if (time < lyric.lines[i].time) break;
+      scrollTop += (Math.floor(lyric.lines[i].txt.length / 37) + 1) * 13 * this.data.system.pixelRatio;
+    }
+
+    this.setData({ "control.scrollTop": scrollTop });
   },
 
   showPlaylist() {
@@ -120,7 +145,6 @@ Page({
 
     new app.globalData.AV.Query("Song")
       .limit(6) // 坑爹的小程序 showActionSheet 只支持六个选项
-      .descending('createdAt')
       .find()
       .then(results => {
         if (results.length > 0) {
@@ -163,14 +187,19 @@ Page({
       audioManager.coverImgUrl = song.cover;
       audioManager.src = song.music_url;
 
-      console.log(song.lyric);
+      if (!!song.lyric) {
+        this.setData({ lyric: new Lyric(song.lyric)});
+      } else {
+        this.setData({ lyric: null });
+      }
 
       audioManager.onTimeUpdate(() => {
         const { duration, currentTime } = audioManager;
         this.setData({
           "control.duration": util.formatTime(duration),
-          "control.currentTime": util.formatTime(currentTime)
-        });
+          "control.currentTime": util.formatTime(currentTime),
+          "control.time": currentTime * 1000,
+        }, this.updateScrollTop.bind(this));
 
         if (!this.data.control.handlerTouchMove) {
           this.setData({ "control.progress": currentTime / duration * 100 });
