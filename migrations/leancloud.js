@@ -1,5 +1,5 @@
 const AV = require('leanengine');
-const config = require('../config');
+const config = require('../src/config');
 const fs = require('fs');
 
 AV.init({
