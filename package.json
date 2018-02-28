@@ -1,0 +1,23 @@
+{
+  "name": "mini-music-player",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "migrate": "node migrations/leancloud.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sqrtqiezi/mini-music-player.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sqrtqiezi/mini-music-player/issues"
+  },
+  "homepage": "https://github.com/sqrtqiezi/mini-music-player#readme",
+  "devDependencies": {
+    "leancloud-storage": "3.6.0",
+    "leanengine": "3.0.2"
+  }
+}

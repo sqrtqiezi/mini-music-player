@@ -120,6 +120,7 @@ Page({
 
     new app.globalData.AV.Query("Song")
       .limit(6) // 坑爹的小程序 showActionSheet 只支持六个选项
+      .descending('createdAt')
       .find()
       .then(results => {
         if (results.length > 0) {
@@ -129,7 +130,8 @@ Page({
               title: item.attributes.title,
               artist: item.attributes.artist,
               cover: item.attributes.cover.attributes.url,
-              music_url: item.attributes.music_data.attributes.url
+              music_url: item.attributes.music_data.attributes.url,
+              lyric: item.attributes.lyric
             });
           });
 
@@ -160,6 +162,8 @@ Page({
       audioManager.singer = song.artist;
       audioManager.coverImgUrl = song.cover;
       audioManager.src = song.music_url;
+
+      console.log(song.lyric);
 
       audioManager.onTimeUpdate(() => {
         const { duration, currentTime } = audioManager;

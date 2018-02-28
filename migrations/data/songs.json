@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Counting Stars",
+    "artist": "OneRepublic",
+    "cover": "migrations/data/Counting Stars.jpg",
+    "music_data": "migrations/data/Counting Stars.mp3",
+    "lyric": "[ti:Counting Stars]\n[ar:OneRepublic]\n[al:Native]\n[offset:0]\n[00:01.02]Lately, I've been,\n[00:02.96]I've been losing sleep\n[00:04.61]\n[00:05.58]Dreaming about the things\n[00:07.38]that we could be\n[00:09.74]But baby, I've been,\n[00:11.72]I've been praying hard,\n[00:13.59]\n[00:14.42]Said, no more counting dollars\n[00:16.64]We'll be counting stars,\n[00:18.89]\n[00:19.53]yeah we'll be counting stars\n[00:23.09]"
+  },
+  {
+    "title": "Wake Me Up When September Ends",
+    "artist": "Green Day",
+    "cover": "migrations/data/Wake Me Up When September Ends.jpg",
+    "music_data": "migrations/data/Wake Me Up When September Ends.mp3",
+    "lyric": ""
+  },
+  {
+    "artist": "Of Monsters And Men",
+    "title": "Dirty Paws",
+    "cover": "migrations/data/Dirty Paws.jpg",
+    "music_data": "migrations/data/Dirty Paws.mp3",
+    "lyric": ""
+  },
+  {
+    "artist": "The Rolling Stones",
+    "title": "Paint It Black",
+    "cover": "migrations/data/Paint It Black.jpg",
+    "music_data": "migrations/data/Paint It Black.mp3",
+    "lyric": "[ti:Paint It Black]\n[ar:Vanessa Carlton]\n[al:Be Not Nobody]\n[by:Van]\n[offset:500]\n[00:00.00]Vanessa Carlton - Paint It Black\n[00:13.79]\n[00:15.79]I see a red door and I want it painted black\n[00:22.25]No colors anymore, I want them to turn black\n[00:29.16]I see the girls walk by dressed in their summer clothes\n[00:35.72]I have to turn my head until my darkness goes\n[00:41.57]\n[00:42.45]I see a line of cars and they are painted black\n[00:49.14]With flowers and my love both never to come back\n[00:56.03]I see people turn their heads, they quickly look away\n[01:02.65]Like a new born baby it just happens every day \n[01:08.07]\n[01:09.33]I look inside myself and see my heart is black\n[01:16.36]I see my red door and it's heading into black\n[01:22.86]Maybe then I'll fade away and not have to face the facts\n[01:29.46]It's not easy facing up when your whole world is black\n[01:34.93]I wanna see it painted, painted, painted black, oh baby\n[01:41.78]I wanna see it painted, painted, painted black, oh baby\n[01:49.79]\n[01:56.50]No more will my green sea go turn a deeper blue\n[02:02.73]I could not foresee this thing happening to you\n[02:10.08]If I look hard enough into the setting sun\n[02:16.65]My love will laugh with me before the morning comes\n[02:22.20]\n[02:49.07]I wanna see it painted, painted, painted black\n[02:54.44]Oh, black as night black as coal\n[02:58.38]I wanna see the sun blotted out from the sky\n[03:03.39]Painted, painted, painted black, oh baby\n[03:10.34]Painted, painted, painted black\n[03:17.57]\n[03:25.33]\n[03:28.95]END"
+  },
+  {
+    "artist": "Adele",
+    "title": "Make You Feel My Love",
+    "cover": "migrations/data/Make You Feel My Love.jpg",
+    "music_data": "migrations/data/Make You Feel My Love.mp3",
+    "lyric": "[ti:Make You Feel My Love]\n[ar:Adele]\n[al:19]\n[by:Yang Yong]\n[02:21.07][02:12.14][02:04.41][00:13.34][00:00.00]Adele - Make You Feel My Love\n[03:25.00][02:26.10][02:14.48][02:08.40][00:18.34][00:07.15]Lyrics by Yang Yong\n[00:26.34]When the rain is blowing in your face\n[00:32.50]And the whole world is on your case\n[00:38.74]I could offer you a warm embrace\n[00:44.55]To make you feel my love\n[00:50.90]When the evening shatters and the stars appear\n[00:57.09]And there is no one there to dry your tears\n[01:03.49]I could hold you for a million years\n[01:09.55]To make you feel my love\n[01:15.88]I know you haven't made your mind up yet\n[01:21.54]But I would never do you wrong\n[01:28.23]I've known it from the moment that we met\n[01:34.07]No doubt in my mind where you belong\n[01:40.98]I'd go hungry I'd go black and blue\n[01:47.10]I'd go crawling down the avenue\n[01:53.14]Know there's nothing that I wouldn't do\n[01:59.24]To make you feel my love\n[02:30.61]The storms are raging on the rolling sea\n[02:36.72]And on the highway of regret\n[02:42.93]The winds of change are blowing wild and free\n[02:48.79]You ain't seen nothing like me yet\n[02:54.98]I could make you happy make your dreams come true\n[03:01.88]Nothing that I wouldn't do\n[03:07.80]Go to the ends of the earth for you\n[03:13.94]To make you feel my love\n[03:20.20]To make you feel my love"
+  },
+  {
+    "artist": "Coldplay",
+    "title": "Viva La Vida",
+    "cover": "migrations/data/Viva La Vida.jpg",
+    "music_data": "migrations/data/Viva La Vida.mp3",
+    "lyric": "[ti:Viva La Vida]\n[ar:Coldplay]\n[al:Viva La Vida Or Death and All His Friends]\n[by: ]\n[offset:500]\n[00:00.00]Coldplay - Viva La Vida\n[00:09.27]www.lrcgc.com   制作\n[00:11.27]\n[Verse 1]\n[00:13.27]I used to rule the world\n[00:16.95]Seas would rise when I gave the word\n[00:19.67]Now in the morning I sleep alone\n[00:23.84]Sweep the streets I used to own\n[00:27.85]\n[00:40.93]I used to roll the dice\n[00:44.68]Feel the fear in my enemy's eyes\n[00:47.90]Listened as the crowd would sing:\n[00:51.87]\"Now the old king is dead!\n[00:53.61]Long live the king!\"\n[00:54.81]One minute I held the key\n[00:58.71]Next the walls were closed on me\n[01:01.43]And I discovered that my castles stand\n[01:05.62]Upon pillars of salt, pillars of sand\n[Chorus]\n[01:09.64]I hear Jerusalem bells a-ringing\n[01:13.22]Roman cavalry choirs are singing\n[01:16.61]Be my mirror my sword and shield\n[01:20.07]Missionaries in a foreign field\n[01:23.54]For some reason I can't explain\n[01:27.08]Once you'd gone there was never,\n[01:29.71]never an honest word\n[01:33.61]That was when I ruled the world\n[01:37.83]\n[Verse 2]\n[01:50.10]It was the wicked and wild wind\n[01:54.32]Blew down the doors to let me in\n[01:57.22]Shattered windows and the sound of drums\n[02:01.55]People couldn't believe what I'd become\n[02:04.61]Revolutionaries wait\n[02:08.36]For my head on a silver plate\n[02:11.06]Just a puppet on a lonely string\n[02:15.40]Oh who would ever wanna be king?\n[Chorus 2]\n[02:19.15]I hear Jerusalem bells a-ringing\n[02:22.75]Roman Cavalry choirs are singing\n[02:26.23]Be my mirror my sword and shield\n[02:29.57]Missionaries in a foreign field\n[02:33.14]For some reason I can't explain\n[02:36.51]I know Saint Peter won't call my name\n[02:39.82]Never an honest word\n[02:43.10]But that was when I ruled the world\n[02:47.22]\n[02:59.79](Ohhhhh Ohhh Ohhh)\n[Chorus 3]\n[03:15.07]Hear Jerusalem bells a-ringing\n[03:18.41]Roman Cavalry choirs are singing\n[03:21.95]Be my mirror my sword and shield\n[03:25.30]My missionaries in a foreign field\n[03:28.74]For some reason I can't explain\n[03:32.18]I know Saint Peter won't call my name\n[03:35.42]Never an honest word\n[03:38.72]But that was when I ruled the world\n[03:42.72]\n[03:56.63]\n[04:02.51]End"
+  }
+]
